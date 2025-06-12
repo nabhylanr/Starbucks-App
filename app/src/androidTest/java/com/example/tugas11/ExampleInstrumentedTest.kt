@@ -1,4 +1,4 @@
-package com.example.tugas11
+package com.example.starbucks
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

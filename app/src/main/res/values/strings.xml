@@ -1,3 +1,37 @@
 <resources>
-    <string name="app_name">Tugas 11</string>
+    <string name="app_name">Starbucks</string>
+
+    <string name="drink_1_name">Fantasy Tail</string>
+    <string name="drink_1_price">Rp.50.000</string>
+
+    <string name="drink_2_name">Coffee Latte</string>
+    <string name="drink_2_price">Rp.55.000</string>
+
+    <string name="drink_3_name">Frappucino</string>
+    <string name="drink_3_price">Rp.50.000</string>
+
+    <string name="drink_4_name">Red Velvet</string>
+    <string name="drink_4_price">Rp.56.000</string>
+
+    <string name="drink_5_name">Strawberry</string>
+    <string name="drink_5_price">Rp.65.000</string>
+
+    <string name="drink_6_name">Matcha</string>
+    <string name="drink_6_price">Rp.56.000</string>
+
+    <string name="reward_1_title">Buy 1 Get 1 Free</string>
+    <string name="reward_1_description">
+        Enjoy double the delight with our Buy 1 Get 1 Free promo!
+    </string>
+
+    <string name="reward_2_title">Free Boba Milk Tea</string>
+    <string name="reward_2_description">
+        Dive into the refreshing world of Boba Milk Tea with our Free Boba Milk Tea promo!
+    </string>
+
+    <string name="reward_3_title">50% Discount of Red Velvet</string>
+    <string name="reward_3_description">
+        Treat yourself to a sweet surprise with our 50% Discount of Red Velvet promo!
+    </string>
+
 </resources>
