@@ -50,16 +50,6 @@ fun SignUpScreen(
     val (birthDate, setBirthDate) = rememberSaveable { mutableStateOf("") }
     val context = LocalContext.current
 
-    val datePickerDialog = remember {
-        DatePickerDialog(
-            context,
-            { _, year, month, dayOfMonth ->
-                setBirthDate("$dayOfMonth/${month + 1}/$year")
-            },
-            2000, 0, 1
-        )
-    }
-
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -117,13 +107,12 @@ fun SignUpScreen(
 
             OutlinedTextField(
                 value = birthDate,
-                onValueChange = {},
-                label = { Text(text = "Birth Date") },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { datePickerDialog.show() },
-                shape = RoundedCornerShape(12.dp),
-                enabled = false
+                onValueChange = setBirthDate,
+                label = { Text(text = "Birth Date (DD/MM/YYYY)") },
+                placeholder = { Text("25/03/2003") },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(12.dp)
             )
 
             OutlinedTextField(
