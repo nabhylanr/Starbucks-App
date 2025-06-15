@@ -32,10 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.compose.Tugas11Theme
 import androidx.compose.foundation.layout.wrapContentWidth
-import android.app.DatePickerDialog
-import androidx.compose.foundation.clickable
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.runtime.remember
 
 @Composable
 fun SignUpScreen(

@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -36,6 +37,8 @@ import com.example.tugas11.R
 import com.example.tugas11.data.MenuRepository
 import com.example.tugas11.ui.components.BottomNavigationBar
 import com.example.tugas11.ui.components.MenuCard
+import androidx. compose. ui. draw. shadow
+import androidx. compose. foundation. lazy. items
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -53,102 +56,94 @@ fun MenuActivity(
 
 @Composable
 fun MenuScreen() {
-    val (search, setSearch) = rememberSaveable {
-        mutableStateOf("")
-    }
-
+    val (search, setSearch) = rememberSaveable { mutableStateOf("") }
     val menu = MenuRepository.drinks
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(
-                start = 32.dp,
-                top = 32.dp,
-                end = 32.dp,
-                bottom = 50.dp
-            )
+            .padding(horizontal = 24.dp, vertical = 16.dp)
     ) {
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Start
-        ) {
-            Box {
-                Image(
-                    painter = painterResource(id = R.drawable.logo_sb),
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier.size(80.dp),
-                )
-            }
-            Spacer(modifier = Modifier.size(20.dp))
-            Column(
-                modifier = Modifier.padding(start = 16.dp)
-            ) {
-                Text(
-                    text = "Good Morning!",
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFF008883)
-                )
-                Text(
-                    modifier = Modifier.padding(vertical = 8.dp),
-                    text = "Start your order and savor it now.",
-                    fontSize = 14.sp
-                )
-            }
-        }
-
-        Spacer(modifier = Modifier.size(20.dp))
-        Text(
-            text = "Menu",
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
-            color = Color(0xFF008883)
+        Image(
+            painter = painterResource(id = R.drawable.banner),
+            contentDescription = "Promo Banner",
+            contentScale = ContentScale.FillWidth,
+            modifier = Modifier
+                .fillMaxWidth()
+                .size(height = 150.dp, width = 0.dp)
+                .padding(vertical = 8.dp)
         )
 
-        Spacer(modifier = Modifier.size(10.dp))
-
         Row(
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalAlignment = androidx.compose.ui.Alignment.CenterVertically,
             modifier = Modifier.padding(vertical = 8.dp)
         ) {
-            RoundedCategory(text = "All", backgroundColor = Color(0xFFAAE0DE))
-            RoundedCategory(text = "Coffee", backgroundColor = Color(0xFFDFE4EC))
-            RoundedCategory(text = "Non-coffee", backgroundColor = Color(0xFFDFE4EC))
+            Image(
+                painter = painterResource(id = R.drawable.logo_sb),
+                contentDescription = "Starbucks Logo",
+                modifier = Modifier
+                    .size(48.dp)
+            )
+
+            Column(
+                modifier = Modifier
+                    .padding(start = 16.dp)
+            ) {
+                Text(
+                    text = "Starbucks",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = Color.Gray,
+                )
+                Text(
+                    text = "Menu",
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFF008883),
+                    lineHeight = 26.sp
+                )
+            }
         }
 
-        Spacer(modifier = Modifier.size(20.dp))
+        Spacer(modifier = Modifier.size(8.dp))
+
+        androidx.compose.foundation.lazy.LazyRow(
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            modifier = Modifier.padding(vertical = 8.dp)
+        ) {
+            items(listOf("All", "Coffee", "Non-coffee", "Tea", "Specials")) {
+                RoundedCategory(text = it)
+            }
+        }
+
+        Spacer(modifier = Modifier.size(12.dp))
 
         LazyVerticalStaggeredGrid(
             columns = StaggeredGridCells.Adaptive(150.dp),
-            verticalItemSpacing = 4.dp,
-            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            verticalItemSpacing = 8.dp,
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier.fillMaxSize(),
             content = {
-                items(menu) { photo ->
-                    MenuCard(menu = photo)
+                items(menu) { item ->
+                    MenuCard(menu = item)
                 }
-                item { Spacer(modifier = Modifier.padding(20.dp)) }
-            },
-            modifier = Modifier.fillMaxSize()
+            }
         )
     }
 }
 
 @Composable
-fun RoundedCategory(text: String, backgroundColor: Color = Color.LightGray) {
+fun RoundedCategory(text: String, backgroundColor: Color = Color(0xFF01A29D)) {
     Box(
         modifier = Modifier
-            .padding(horizontal = 8.dp, vertical = 4.dp)
-            .background(backgroundColor, shape = RoundedCornerShape(12.dp))
-            .padding(horizontal = 12.dp, vertical = 8.dp)
+            .background(backgroundColor, shape = RoundedCornerShape(20.dp))
+            .padding(horizontal = 16.dp, vertical = 8.dp)
     ) {
         Text(
             text = text,
-            color = Color.Black,
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Bold
+            color = Color.White,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Medium
         )
     }
 }
@@ -168,6 +163,7 @@ fun MenuScreenPreview() {
     showBackground = true,
     showSystemUi = true
 )
+
 @Composable
 fun MenuActivityPreview() {
     val navController = rememberNavController()
