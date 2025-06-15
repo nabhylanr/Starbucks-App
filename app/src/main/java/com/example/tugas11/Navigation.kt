@@ -8,8 +8,10 @@ import com.example.tugas11.ui.pages.claimReward.RewardActivity
 import com.example.tugas11.ui.pages.menu.MenuActivity
 import com.example.tugas11.ui.pages.signIn.SignInScreen
 import com.example.tugas11.ui.pages.signUp.SignUpScreen
+import com.example.tugas11.ui.pages.splash.SplashScreen
 
 sealed class Route {
+    data class SplashScreen(val name: String = "Splash"): Route()
     data class SignInScreen(val name: String = "SignIn"): Route()
     data class SignUpScreen(val name: String = "SignUp"): Route()
     data class MenuScreen(val name: String = "Menu"): Route()
@@ -20,19 +22,26 @@ sealed class Route {
 fun MyNavigation(navHostController: NavHostController) {
     NavHost(
         navController = navHostController,
-        startDestination = Route.SignInScreen().name
+        startDestination = Route.SplashScreen().name
     ) {
+        composable(route = Route.SplashScreen().name) {
+            SplashScreen(
+                onLoginClick = {
+                    navHostController.navigate(Route.SignInScreen().name)
+                },
+                onRegisterClick = {
+                    navHostController.navigate(Route.SignUpScreen().name)
+                }
+            )
+        }
+
         composable(route = Route.SignInScreen().name) {
             SignInScreen(
                 onSignInClick = {
-                    navHostController.navigate(
-                        Route.MenuScreen().name
-                    )
+                    navHostController.navigate(Route.MenuScreen().name)
                 },
                 onSignUpClick = {
-                    navHostController.navigate(
-                        Route.SignUpScreen().name
-                    )
+                    navHostController.navigate(Route.SignUpScreen().name)
                 }
             )
         }
@@ -40,28 +49,20 @@ fun MyNavigation(navHostController: NavHostController) {
         composable(route = Route.SignUpScreen().name) {
             SignUpScreen(
                 onSignUpClick = {
-                    navHostController.navigate(
-                        Route.MenuScreen().name
-                    )
+                    navHostController.navigate(Route.MenuScreen().name)
                 },
                 onSignInClick = {
-                    navHostController.navigate(
-                        Route.SignInScreen().name
-                    )
+                    navHostController.navigate(Route.SignInScreen().name)
                 }
             )
         }
 
         composable(route = Route.MenuScreen().name) {
-            MenuActivity(
-                navHostController
-            )
+            MenuActivity(navHostController)
         }
 
         composable(route = Route.RewardScreen().name) {
-            RewardActivity(
-                navHostController
-            )
+            RewardActivity(navHostController)
         }
     }
 }

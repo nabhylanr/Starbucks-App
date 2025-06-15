@@ -6,7 +6,9 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -77,16 +79,20 @@ class MainActivity : ComponentActivity() {
         }
 
         Box(
-            contentAlignment = Alignment.Center,
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color.White)
+                .padding(24.dp)
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.logo_start),
-                contentDescription = "Logo",
-                modifier = Modifier.size(200.dp)
-            )
+            Column(
+                modifier = Modifier.align(Alignment.Center),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.logo_sb),
+                    contentDescription = "App Logo",
+                    modifier = Modifier.size(180.dp)
+                )
+            }
         }
     }
 }
