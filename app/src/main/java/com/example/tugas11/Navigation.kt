@@ -10,6 +10,7 @@ import com.example.tugas11.ui.pages.profile.ProfileActivity
 import com.example.tugas11.ui.pages.signIn.SignInScreen
 import com.example.tugas11.ui.pages.signUp.SignUpScreen
 import com.example.tugas11.ui.pages.splash.SplashScreen
+import com.example.tugas11.ui.pages.otp.OTPScreen
 
 sealed class Route(val name: String) {
     object SplashScreen : Route("Splash")
@@ -18,6 +19,7 @@ sealed class Route(val name: String) {
     object MenuScreen : Route("Menu")
     object ProfileScreen : Route("Profile")
     object RewardScreen : Route("Reward")
+    object OTPScreen : Route("OTP")
 }
 
 @Composable
@@ -51,10 +53,18 @@ fun MyNavigation(navHostController: NavHostController) {
         composable(route = Route.SignUpScreen.name) {
             SignUpScreen(
                 onSignUpClick = {
-                    navHostController.navigate(Route.MenuScreen.name)
+                    navHostController.navigate(Route.OTPScreen.name)
                 },
                 onSignInClick = {
                     navHostController.navigate(Route.SignInScreen.name)
+                }
+            )
+        }
+
+        composable(route = Route.OTPScreen.name) {
+            OTPScreen(
+                onOTPSubmit = {
+                    navHostController.navigate(Route.MenuScreen.name)
                 }
             )
         }
