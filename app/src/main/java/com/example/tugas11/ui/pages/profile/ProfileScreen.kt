@@ -82,7 +82,7 @@ fun ProfileScreen(
                 Spacer(modifier = Modifier.height(8.dp))
                 ProfileField(label = "Email", value = "ardhika@gmail.com")
                 Spacer(modifier = Modifier.height(8.dp))
-                ProfileField(label = "Birth Date", value = "25/05/2004")
+                ProfileField(label = "Birth Date", value = "25/03/2004")
                 Spacer(modifier = Modifier.height(8.dp))
                 ProfileField(label = "Phone", value = "081234567890")
                 Spacer(modifier = Modifier.height(8.dp))
