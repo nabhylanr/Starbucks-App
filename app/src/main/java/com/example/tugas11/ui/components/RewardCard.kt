@@ -9,10 +9,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -28,7 +30,7 @@ import com.example.tugas11.model.Reward
 @Composable
 fun RewardCard(reward: Reward, modifier: Modifier = Modifier) {
     Card(
-        modifier = modifier
+        modifier = modifier,
     ) {
       Row(
           modifier = Modifier
@@ -48,7 +50,9 @@ fun RewardCard(reward: Reward, modifier: Modifier = Modifier) {
               )
               Text(
                   text = stringResource(id = reward.descriptionRes),
-                  textAlign = TextAlign.Justify
+                  textAlign = TextAlign.Justify,
+                  fontSize = 14.sp,
+                  lineHeight = 20.sp
               )
           }
           Box(

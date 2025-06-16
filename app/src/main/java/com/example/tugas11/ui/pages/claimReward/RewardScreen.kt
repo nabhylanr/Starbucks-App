@@ -67,7 +67,7 @@ fun RewardScreen() {
                     modifier = Modifier.size(80.dp),
                 )
             }
-            Spacer(modifier = Modifier.size(20.dp))
+            Spacer(modifier = Modifier.size(10.dp))
             Column(
                 modifier = Modifier.padding(start = 16.dp)
             ) {
@@ -78,7 +78,7 @@ fun RewardScreen() {
                     color = Color(0xFF008883)
                 )
                 Text(
-                    modifier = Modifier.padding(vertical = 8.dp),
+                    modifier = Modifier.padding(vertical = 4.dp),
                     text = "Claim your reward now!",
                     fontSize = 14.sp
                 )

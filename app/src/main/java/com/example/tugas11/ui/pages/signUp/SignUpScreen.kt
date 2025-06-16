@@ -106,7 +106,7 @@ fun SignUpScreen(
                 value = birthDate,
                 onValueChange = setBirthDate,
                 label = { Text(text = "Birth Date (DD/MM/YYYY)") },
-                placeholder = { Text("25/03/2003") },
+                placeholder = { Text("25/03/2004") },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(12.dp)

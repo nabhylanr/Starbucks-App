@@ -3,6 +3,7 @@ package com.example.tugas11.ui.pages.profile
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,32 +27,42 @@ fun ProfileActivity(
             BottomNavigationBar(navController = navHostController)
         }
     ) { innerPadding ->
-        ProfileScreen(modifier = Modifier.padding(innerPadding))
+        ProfileScreen(
+            modifier = Modifier.padding(innerPadding),
+            onSignInClick = {
+                navHostController.navigate("SignIn") {
+                    popUpTo(0)
+                }
+            }
+        )
     }
 }
 
 @Composable
-fun ProfileScreen(modifier: Modifier = Modifier) {
+fun ProfileScreen(
+    modifier: Modifier = Modifier,
+    onSignInClick: () -> Unit
+) {
     Column(
         modifier = modifier
             .fillMaxSize()
             .padding(horizontal = 24.dp, vertical = 16.dp)
     ) {
         Text(
-            text = "My Profile",
+            text = "Profile",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = Color(0xFF008883)
         )
 
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier.fillMaxWidth()
         ) {
             Image(
-                painter = painterResource(id = R.drawable.profile_pic), // Ganti dengan drawable profil kamu
+                painter = painterResource(id = R.drawable.profile_pic),
                 contentDescription = "Profile Picture",
                 modifier = Modifier
                     .size(120.dp)
@@ -61,25 +72,43 @@ fun ProfileScreen(modifier: Modifier = Modifier) {
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        ProfileInfo(label = "Name", value = "Nabhyla Niagara")
-        ProfileInfo(label = "Email", value = "nabhyla@example.com")
-        ProfileInfo(label = "Phone", value = "+62 812 3456 7890")
-        ProfileInfo(label = "Address", value = "Jakarta, Indonesia")
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = Color.White),
+            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+        ) {
+            Column(modifier = Modifier.padding(16.dp)) {
+                ProfileField(label = "Name", value = "Ardhika Krishna")
+                Spacer(modifier = Modifier.height(8.dp))
+                ProfileField(label = "Email", value = "ardhika@gmail.com")
+                Spacer(modifier = Modifier.height(8.dp))
+                ProfileField(label = "Birth Date", value = "25/05/2004")
+                Spacer(modifier = Modifier.height(8.dp))
+                ProfileField(label = "Phone", value = "081234567890")
+                Spacer(modifier = Modifier.height(8.dp))
+                ProfileField(label = "Address", value = "Surabaya, Indonesia")
+            }
+        }
+
+        Spacer(modifier = Modifier.weight(1f))
+
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = onSignInClick,
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFF01A29D)
+            ),
+            shape = RoundedCornerShape(12.dp)
+        ) {
+            Text(text = "Logout", fontWeight = FontWeight.SemiBold)
+        }
     }
 }
 
 @Composable
-fun ProfileInfo(label: String, value: String) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-    ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text(text = label, fontSize = 14.sp, color = Color.Gray)
-            Text(text = value, fontSize = 16.sp, fontWeight = FontWeight.Medium)
-        }
+fun ProfileField(label: String, value: String) {
+    Column(modifier = Modifier.padding(vertical = 4.dp)) {
+        Text(text = label, fontSize = 14.sp, color = Color.Gray)
+        Text(text = value, fontSize = 16.sp, fontWeight = FontWeight.Medium)
     }
 }
