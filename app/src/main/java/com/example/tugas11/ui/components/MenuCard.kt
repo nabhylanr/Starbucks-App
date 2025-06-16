@@ -20,14 +20,23 @@ import androidx.compose.ui.unit.sp
 import com.example.compose.Tugas11Theme
 import com.example.tugas11.data.MenuRepository
 import com.example.tugas11.model.Menu
-
+import androidx. compose. material3.CardDefaults
+import androidx. compose. ui. graphics. Color
 
 @Composable
 fun MenuCard(
     menu: Menu,
     modifier: Modifier = Modifier
 ) {
-    Card(modifier = modifier) {
+    Card(
+        modifier = modifier,
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White
+        ),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 6.dp
+        )
+    ) {
         Column(
             modifier = Modifier.padding(horizontal = 12.dp, vertical = 16.dp),
             verticalArrangement = Arrangement.Center,

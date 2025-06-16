@@ -6,63 +6,69 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.tugas11.ui.pages.claimReward.RewardActivity
 import com.example.tugas11.ui.pages.menu.MenuActivity
+import com.example.tugas11.ui.pages.profile.ProfileActivity
 import com.example.tugas11.ui.pages.signIn.SignInScreen
 import com.example.tugas11.ui.pages.signUp.SignUpScreen
 import com.example.tugas11.ui.pages.splash.SplashScreen
 
-sealed class Route {
-    data class SplashScreen(val name: String = "Splash"): Route()
-    data class SignInScreen(val name: String = "SignIn"): Route()
-    data class SignUpScreen(val name: String = "SignUp"): Route()
-    data class MenuScreen(val name: String = "Menu"): Route()
-    data class RewardScreen(val name: String = "Reward")
+sealed class Route(val name: String) {
+    object SplashScreen : Route("Splash")
+    object SignInScreen : Route("SignIn")
+    object SignUpScreen : Route("SignUp")
+    object MenuScreen : Route("Menu")
+    object ProfileScreen : Route("Profile")
+    object RewardScreen : Route("Reward")
 }
 
 @Composable
 fun MyNavigation(navHostController: NavHostController) {
     NavHost(
         navController = navHostController,
-        startDestination = Route.SplashScreen().name
+        startDestination = Route.SplashScreen.name
     ) {
-        composable(route = Route.SplashScreen().name) {
+        composable(route = Route.SplashScreen.name) {
             SplashScreen(
                 onLoginClick = {
-                    navHostController.navigate(Route.SignInScreen().name)
+                    navHostController.navigate(Route.SignInScreen.name)
                 },
                 onRegisterClick = {
-                    navHostController.navigate(Route.SignUpScreen().name)
+                    navHostController.navigate(Route.SignUpScreen.name)
                 }
             )
         }
 
-        composable(route = Route.SignInScreen().name) {
+        composable(route = Route.SignInScreen.name) {
             SignInScreen(
                 onSignInClick = {
-                    navHostController.navigate(Route.MenuScreen().name)
+                    navHostController.navigate(Route.MenuScreen.name)
                 },
                 onSignUpClick = {
-                    navHostController.navigate(Route.SignUpScreen().name)
+                    navHostController.navigate(Route.SignUpScreen.name)
                 }
             )
         }
 
-        composable(route = Route.SignUpScreen().name) {
+        composable(route = Route.SignUpScreen.name) {
             SignUpScreen(
                 onSignUpClick = {
-                    navHostController.navigate(Route.MenuScreen().name)
+                    navHostController.navigate(Route.MenuScreen.name)
                 },
                 onSignInClick = {
-                    navHostController.navigate(Route.SignInScreen().name)
+                    navHostController.navigate(Route.SignInScreen.name)
                 }
             )
         }
 
-        composable(route = Route.MenuScreen().name) {
+        composable(route = Route.MenuScreen.name) {
             MenuActivity(navHostController)
         }
 
-        composable(route = Route.RewardScreen().name) {
+        composable(route = Route.RewardScreen.name) {
             RewardActivity(navHostController)
+        }
+
+        composable(route = Route.ProfileScreen.name) {
+            ProfileActivity(navHostController)
         }
     }
 }

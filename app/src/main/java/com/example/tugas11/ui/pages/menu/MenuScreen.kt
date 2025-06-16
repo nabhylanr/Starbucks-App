@@ -37,8 +37,7 @@ import com.example.tugas11.R
 import com.example.tugas11.data.MenuRepository
 import com.example.tugas11.ui.components.BottomNavigationBar
 import com.example.tugas11.ui.components.MenuCard
-import androidx. compose. ui. draw. shadow
-import androidx. compose. foundation. lazy. items
+import androidx.compose.foundation.lazy.items
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
