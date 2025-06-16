@@ -11,4 +11,4 @@ A mobile application built with Jetpack Compose, designed to simplify the way us
 
 | Reward Screen     | Profile Screen     |       
 |-------------|-------------|
-| <img src="https://github.com/user-attachments/assets/49b0baab-7d7f-42af-9dbf-dea3641778b5" alt="reward screen" width="300"/> | <img src="https://github.com/user-attachments/assets/c491b1b2-d902-4b03-b73b-2cb5caac58fa" alt="profile screen" width="300"/>    |     
+| <img src="https://github.com/user-attachments/assets/49b0baab-7d7f-42af-9dbf-dea3641778b5" alt="reward screen" width="300"/> | <img src="https://github.com/user-attachments/assets/0afcacb6-e410-403f-bf30-a23c7452523d" alt="profile screen" width="300"/>    |     
